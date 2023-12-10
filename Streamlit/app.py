@@ -3,38 +3,54 @@ import pandas as pd
 import plotly.express as px
 
 # Function to load predictions
-@st.cache
+@st.cache_data
 def load_predictions(filename):
     data = pd.read_csv(filename)
-    data['Month'] = pd.to_datetime(data['Month']).dt.strftime('%Y-%m')
+    data['Date'] = pd.to_datetime(data['Date']).dt.strftime('%Y-%m')
     return data
 
-# Title and Introduction
-st.title('2022 Receipt Count Predictions')
-st.markdown("## Explore the Receipt Count Predictions from Different Models")
+# Title and Introduction with icons
+st.title('💹 2022 Receipt Count Predictions')
+st.markdown("## Explore the Receipt Count Predictions for the year 2022 📈")
 
 # Sidebar for model selection
-st.sidebar.title("Model Selection")
+st.sidebar.title("🔍 Model Selection")
 model_option = st.sidebar.selectbox(
     'Choose a model:',
     ('LSTM', 'RNN', 'Prophet')
 )
 
-# Load and display the selected model's predictions
-filename_map = {'LSTM': '/Users/ekanshtrivedi/Fetch-MLE/results/LSTM_predictions.csv', 
-                'RNN': '/Users/ekanshtrivedi/Fetch-MLE/results/RNN_predictions.csv', 
-                'Prophet': '/Users/ekanshtrivedi/Fetch-MLE/results/Prophet_predictions.csv'}
+# Button to load predictions
+if st.sidebar.button('Get Predictions'):
+    filename_map = {'LSTM': '/Users/ekanshtrivedi/Fetch-MLE/results/LSTM_predictions.csv', 
+                    'RNN': '/Users/ekanshtrivedi/Fetch-MLE/results/RNN_predictions.csv', 
+                    'Prophet': '/Users/ekanshtrivedi/Fetch-MLE/results/Prophet_predictions.csv'}
 
-predictions = load_predictions(filename_map[model_option])
+    predictions = load_predictions(filename_map[model_option])
 
-# Display Data Table
-st.markdown("### Predicted Receipt Counts")
-st.dataframe(predictions)
+    # Display Data Table
+    st.markdown("### Predicted Receipt Counts")
+    st.dataframe(predictions)
 
-# Plotting Predictions
-st.markdown("### Interactive Prediction Graph")
-fig = px.line(predictions, x='Month', y='Predicted_Receipt_Count', 
-              title=f'Monthly Predicted Receipt Counts for 2022 ({model_option} Model)', 
-              markers=True)
-st.plotly_chart(fig, use_container_width=True)
+    # Plotting Predictions and fixing the error
+    st.markdown("### Interactive Prediction Graph")
+    fig = px.line(predictions, x='Date', y='Prediction', 
+                  title=f'Monthly Predicted Receipt Counts for 2022 ({model_option} Model)', 
+                  markers=True)
+    st.plotly_chart(fig, use_container_width=True)
 
+    # Download links
+    st.markdown('## Download Results')
+    st.download_button(
+        label="Download Data as CSV",
+        data=predictions.to_csv(index=False).encode('utf-8'),
+        file_name='predictions.csv',
+        mime='text/csv',
+    )
+
+    st.download_button(
+        label="Download Plot as Image",
+        data=fig.to_image(format="png"),
+        file_name='predictions_plot.png',
+        mime='image/png',
+    )
