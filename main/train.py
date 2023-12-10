@@ -6,7 +6,7 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dense, SimpleRNN, Dropout
 from keras.optimizers import Adam
 from prophet import Prophet
-from main.utils import *
+from utils import *
 
 
 def train_linear_regression(X_train, y_train):
@@ -44,7 +44,7 @@ def train_prophet_model(df_prophet):
 
 def main():
     # Load and preprocess data
-    df2 = load_data('data_daily.csv')
+    df2 = load_data('/Users/ekanshtrivedi/Fetch-MLE/data_daily.csv')
     df2 = feature_engineering(df2)
     train, test = split_data(df2, split_date='2021-09-01')
     X_train, y_train, X_test, y_test = prepare_features(train, test)

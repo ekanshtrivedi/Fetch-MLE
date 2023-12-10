@@ -35,6 +35,21 @@ def create_sequences(data, sequence_length):
         y.append(data[i, 0])
     return np.array(X), np.array(y)
 
+def resample_predictions(daily_predictions, start_date, end_date, freq='M'):
+    """
+    Resample daily predictions to a specified frequency.
+
+    :param daily_predictions: Array of daily predictions.
+    :param start_date: Start date of the prediction range.
+    :param end_date: End date of the prediction range.
+    :param freq: Frequency for resampling. Default is 'M' for monthly.
+    :return: Resampled DataFrame.
+    """
+    dates = pd.date_range(start=start_date, end=end_date)
+    predictions_df = pd.DataFrame({'Date': dates, 'Prediction': daily_predictions})
+    predictions_df.set_index('Date', inplace=True)
+    return predictions_df.resample(freq).sum()
+
 def split_data(df, split_date):
     """Splits the data into training and testing sets."""
     train = df.loc[df['# Date'] < split_date]
