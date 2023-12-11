@@ -54,19 +54,19 @@ The objective is to predict the number of scanned receipts for each month of the
 
 - Select the desired model via the sidebar.
 
-![](images/model_selection.png)
+![](images/model-selection.png)
 
 - Click "Get Predictions" to load and view the predictions.
 
-![](images/get_predictions.png)
+![](images/predictions.png)
 
 
 - Interactive graphs and data tables will display the predicted receipt counts.
 
-![](images/Table.png)
+![](images/table-viz.png)
 
 
-![](images/Graph.png)
+![](images/graph-viz.png)
 
 
 ## Models Used
