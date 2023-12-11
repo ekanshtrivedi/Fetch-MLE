@@ -8,7 +8,7 @@ def predict_with_lstm(model_path, scaler, sequence_length, data):
     model = load_model(model_path)
     last_sequence = data[-sequence_length:]
     predictions = []
-    for _ in range(365):  # For example, predicting for the next 365 days
+    for _ in range(365): 
         current_sequence = last_sequence.reshape((1, sequence_length, 1))
         next_prediction = model.predict(current_sequence)[0][0]
         predictions.append(next_prediction)

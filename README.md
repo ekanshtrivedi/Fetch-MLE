@@ -1,5 +1,20 @@
 # Fetch Receipt Count Project
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Problem Statement](#problem-statement)
+3. [Repository Structure](#repository-structure)
+4. [Data Overview](#data-overview)
+5. [How to Run](#how-to-run)
+   - [Web Application](#web-application)
+   - [Using Docker Hub](#using-docker-hub)
+6. [Using the Application](#using-the-application)
+7. [Hugging Face Inference](#hugging-face-inference)
+8. [Models Used](#models-used)
+9. [Model Results](#model-results)
+10. [Contributions](#contributions)
+11. [Contact](#contact)
+
 ## Overview
 
 Welcome to the Fetch Receipt Count Prediction Repository! This project is focused on predicting the future number of scanned receipts based on historical data. It includes a machine learning model and a user-friendly web application for visualization.
@@ -34,41 +49,73 @@ The objective is to predict the number of scanned receipts for each month of the
 - `data_daily.csv`: Dataset used for training and predictions.
 - `requirements.txt`: Required libraries and dependencies.
 
+## Data Overview
+
+### Data Description
+
+The project utilizes a comprehensive dataset of daily scanned receipt counts for the year 2021. This dataset is crucial for understanding customer engagement and predicting future trends.
+
+### Monthly Aggregated Data
+
+For a more streamlined view, the daily data has been aggregated into monthly totals, providing a clear picture of customer activity over each month. Below is an overview of this aggregated data:
+
+![](images/month-data.png)
+
+![](images/count-main.png)
+
 ## How to Run
 
 ### Web Application
 
 1. **Build Docker Image:**
-   Run `docker build -t receipt-prediction-app .` in the terminal to build the Docker image from the Dockerfile.
+
+ Run the following command in the terminal to build the Docker image from the Dockerfile.
+
+```shell
+`docker build -t receipt-prediction-app .`
+```
 
 2. **Run Docker Container:**
-   Use `docker run -p 8501:8501 receipt-prediction-app` to start the Docker container, mapping port 8501.
+
+Use the following command to start the Docker container, mapping port 8501. 
+
+```shell
+`docker run -p 8501:8501 receipt-prediction-app`
+```
 
 3. **Access the Application:**
-   Open your web browser and go to `http://localhost:8501` to interact with the application.
+
+   To interact with the application go to the local host 8501, or simply paste the following link on your local browser.
+
+```shell
+`http://localhost:8501`
+```
 
 ### Running Using Docker Hub
 
 1. **Pull the Image from Docker Hub:**
 
-   The image is hosted on Docker Hub, you can pull it using:
+   *The image is hosted on Docker Hub, you can pull it using:*
 
-
-    docker pull ekanshtrivedi/receipt-prediction-app:v2
+    ```shell
+    `docker pull ekanshtrivedi/receipt-prediction-app:v2`
+    ```
 
 2. **Run the Container:**
 
-        After pulling the image, run the container:
+    *After pulling the image, run the container:*
 
-
-
-    docker run -p 8501:8501 ekanshtrivedi/receipt-prediction-app:v2
+    ```shell
+    `docker run -p 8501:8501 ekanshtrivedi/receipt-prediction-app:v22`
+    ```
 
 3. **Access the Application:**
 
+    *As before, access the application via the following command in your browser.*
 
-    As before, access the application via `http://localhost:8501` in your browser.
-
+    ```shell
+    `http://localhost:8501`
+    ```
 
 ### Using the Application
 
@@ -88,6 +135,11 @@ The objective is to predict the number of scanned receipts for each month of the
 
 ![](images/graph-viz.png)
 
+## Inference on Hugging Face
+
+In addition to running the application locally or via Docker, you can also experience our model's capabilities through our dedicated space on Hugging Face. This platform allows for an interactive and user-friendly way to visualize predictions without any setup requirements.
+
+Visit the application at [MLE-Fetch-Application](https://huggingface.co/spaces/ekansh1/MLE-Fetch-Application) to see the models in action. This space provides a web-based interface for easy interaction with our predictive models.
 
 ## Models Used
 
@@ -96,6 +148,23 @@ The objective is to predict the number of scanned receipts for each month of the
 3. **Prophet (by Facebook)**: Developed by Facebook, it's great for forecasting with daily observations that display patterns on different time scales.
 
 Each model offers unique perspectives on the prediction task.
+
+## Model Results
+
+After training our models (LSTM, RNN, and Prophet) on the historical data, we have generated predictions for each month of 2022. Below are the visual representations of these predictions:
+
+1. *LSTM model:*
+
+![](images/lstm.png)
+
+2. *RNN model:*
+
+![](images/rnn.png)
+
+3. *Prophet model:*
+
+![](images/prophet.png)
+
 
 ## Contributions
 
