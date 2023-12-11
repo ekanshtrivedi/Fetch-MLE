@@ -49,6 +49,20 @@ The objective is to predict the number of scanned receipts for each month of the
 3. **Access the Application:**
    Open your web browser and go to `http://localhost:8501` to interact with the application.
 
+### Running Using Docker Hub
+
+1. **Pull the Image from Docker Hub:**
+   If the image is hosted on Docker Hub, you can pull it using:
+    docker pull ekanshtrivedi/receipt-prediction-app:v2
+
+2. **Run the Container:**
+After pulling the image, run the container:
+
+docker run -p 8501:8501 ekanshtrivedi/receipt-prediction-app:v2
+
+3. **Access the Application:**
+As before, access the application via `http://localhost:8501` in your browser.
+
 
 ### Using the Application
 
