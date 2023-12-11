@@ -20,11 +20,9 @@ The objective is to predict the number of scanned receipts for each month of the
   - `train.py`: Training script for ML models.
   - `utils.py`: Utility functions used across the project.
 - `results/`: Contains the results of predictions.
-  - `LSTM_predictions.csv`
+  - `LSTM_predictions-final.csv`
   - `Prophet_predictions.csv`
-  - `RNN_predictions.csv`
-  - `lstm_predictions1.csv`
-  - `rnn_predictions1.csv`
+  - `RNN_predictions-final.csv`
 - `trained_models/`: Trained model files.
   - `LSTM.h5`
   - `RNN.h5`
