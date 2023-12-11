@@ -1,8 +1,8 @@
-# Fetch Receipt Prediction Repository
+# Fetch Receipt Count Project
 
 ## Overview
 
-Welcome to the Fetch Receipt Prediction Repository! This project is focused on predicting the future number of scanned receipts based on historical data. It includes a machine learning model and a user-friendly web application for visualization.
+Welcome to the Fetch Receipt Count Prediction Repository! This project is focused on predicting the future number of scanned receipts based on historical data. It includes a machine learning model and a user-friendly web application for visualization.
 
 ## Problem Statement
 
