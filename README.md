@@ -106,7 +106,7 @@ Use the following command to start the Docker container, mapping port 8501.
     *After pulling the image, run the container:*
 
     ```shell
-    `docker run -p 8501:8501 ekanshtrivedi/receipt-prediction-app:v22`
+    `docker run -p 8501:8501 ekanshtrivedi/receipt-prediction-app:v2`
     ```
 
 3. **Access the Application:**
