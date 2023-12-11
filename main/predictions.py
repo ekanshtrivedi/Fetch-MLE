@@ -5,6 +5,18 @@ from utils import *
 import pickle
 
 def predict_with_lstm(model_path, scaler, sequence_length, data):
+    """
+    Generate predictions using an LSTM model.
+
+    Args:
+    model_path (str): Path to the trained LSTM model.
+    scaler (MinMaxScaler): Scaler used for inverse transformation of predictions.
+    sequence_length (int): Number of time steps in the input data sequence.
+    data (array-like): Scaled time series data used for making predictions.
+
+    Returns:
+    numpy.ndarray: Inverse-transformed predictions from the LSTM model.
+    """
     model = load_model(model_path)
     last_sequence = data[-sequence_length:]
     predictions = []
@@ -17,6 +29,18 @@ def predict_with_lstm(model_path, scaler, sequence_length, data):
     return scaler.inverse_transform(np.array(predictions).reshape(-1, 1)).flatten()
 
 def predict_with_rnn(model_path, scaler, sequence_length, data):
+    """
+    Generate predictions using an RNN model.
+
+    Args:
+    model_path (str): Path to the trained RNN model.
+    scaler (MinMaxScaler): Scaler used for inverse transformation of predictions.
+    sequence_length (int): Number of time steps in the input data sequence.
+    data (array-like): Scaled time series data used for making predictions.
+
+    Returns:
+    numpy.ndarray: Inverse-transformed predictions from the RNN model.
+    """
     model = load_model(model_path)
     last_sequence = data[-sequence_length:]
     predictions = []
@@ -31,6 +55,16 @@ def predict_with_rnn(model_path, scaler, sequence_length, data):
 
 
 def predict_with_prophet(model_path, future_periods=365):
+    """
+    Generate predictions using the Prophet model.
+
+    Args:
+    model_path (str): Path to the trained Prophet model file.
+    future_periods (int): Number of future periods to predict.
+
+    Returns:
+    pandas.DataFrame: Forecasted values with columns 'ds', 'yhat', 'yhat_lower', and 'yhat_upper'.
+    """
     with open(model_path, 'rb') as f:
         model = pd.read_pickle(f)
     future = model.make_future_dataframe(periods=future_periods)
@@ -38,6 +72,9 @@ def predict_with_prophet(model_path, future_periods=365):
     return forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']]
 
 def main():
+    """
+    Main function to run prediction scripts.
+    """
     start_date = '2022-01-01'
     end_date = '2022-12-31'
     # Load and preprocess data
