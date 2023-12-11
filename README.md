@@ -60,16 +60,16 @@ The objective is to predict the number of scanned receipts for each month of the
 
 2. **Run the Container:**
 
-After pulling the image, run the container:
+        After pulling the image, run the container:
 
 
 
-docker run -p 8501:8501 ekanshtrivedi/receipt-prediction-app:v2
+    docker run -p 8501:8501 ekanshtrivedi/receipt-prediction-app:v2
 
 3. **Access the Application:**
 
 
-As before, access the application via `http://localhost:8501` in your browser.
+    As before, access the application via `http://localhost:8501` in your browser.
 
 
 ### Using the Application
