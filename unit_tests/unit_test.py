@@ -9,7 +9,7 @@ class TestUtils(unittest.TestCase):
 
     def test_load_data(self):
         """
-        Test whether the load_data function correctly loads data into a DataFrame.
+        Test whether the load_data function correctly loads data into the DataFrame.
         """
         df = load_data('/Users/ekanshtrivedi/Fetch-MLE/data_daily.csv')
         self.assertIsInstance(df, pd.DataFrame)
