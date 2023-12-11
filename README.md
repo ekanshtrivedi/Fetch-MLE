@@ -135,7 +135,7 @@ Use the following command to start the Docker container, mapping port 8501.
 
 ![](images/graph-viz.png)
 
-## Inference on Hugging Face
+## Hugging Face Inference
 
 In addition to running the application locally or via Docker, you can also experience our model's capabilities through our dedicated space on Hugging Face. This platform allows for an interactive and user-friendly way to visualize predictions without any setup requirements.
 
