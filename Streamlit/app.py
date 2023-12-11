@@ -22,8 +22,8 @@ model_option = st.sidebar.selectbox(
 
 # Button to load predictions
 if st.sidebar.button('Get Predictions'):
-    filename_map = {'LSTM': '/Users/ekanshtrivedi/Fetch-MLE/results/LSTM_predictions.csv', 
-                    'RNN': '/Users/ekanshtrivedi/Fetch-MLE/results/RNN_predictions.csv', 
+    filename_map = {'LSTM': '/Users/ekanshtrivedi/Fetch-MLE/results/LSTM_predictions-final.csv', 
+                    'RNN': '/Users/ekanshtrivedi/Fetch-MLE/results/rnn_predictions-final.csv', 
                     'Prophet': '/Users/ekanshtrivedi/Fetch-MLE/results/Prophet_predictions.csv'}
 
     predictions = load_predictions(filename_map[model_option])
